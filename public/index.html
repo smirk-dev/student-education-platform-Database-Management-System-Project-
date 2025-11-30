@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Student Learning Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🎓 Student Portal</div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
+                <a href="#" class="nav-link" onclick="showPage('courses')">Courses</a>
+                <a href="#" class="nav-link" id="dashboardLink" style="display:none" onclick="showPage('dashboard')">Dashboard</a>
+                <a href="#" class="nav-link" id="loginLink" onclick="showPage('login')">Login</a>
+                <a href="#" class="nav-link" id="logoutLink" style="display:none" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero">
+                <h1>Hybrid Student Learning Portal</h1>
+                <p class="subtitle">A Database Management Systems Project</p>
+                <p class="description">
+                    This platform demonstrates polyglot persistence by using both 
+                    <strong>MySQL</strong> (for relational data) and <strong>MongoDB</strong> (for flexible data).
+                </p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🗄️ MySQL</h3>
+                        <p>Users, Courses, Enrollments, Quizzes, and Submissions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📦 MongoDB</h3>
+                        <p>Discussions, Assignments, and Activity Logs</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="showPage('login')">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="loginPage" class="page">
+            <div class="auth-container">
+                <h2>Login</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                    </div>
+                    <div id="loginError" class="error-message"></div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" onclick="showPage('register')">Register here</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="registerPage" class="page">
+            <div class="auth-container">
+                <h2>Register</h2>
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="registerName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="registerEmail" required placeholder="john.doe@student.edu">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="registerPassword" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select id="registerRole" required>
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                        </select>
+                    </div>
+                    <div id="registerError" class="error-message"></div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <p class="auth-switch">
+                    Already have an account? <a href="#" onclick="showPage('login')">Login here</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Courses Page -->
+        <div id="coursesPage" class="page">
+            <h2>Available Courses</h2>
+            <div id="coursesList" class="courses-grid">
+                <p>Loading courses...</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <h2>My Dashboard</h2>
+            <div id="profileSection" class="profile-section"></div>
+            <div id="enrolledCourses" class="enrolled-courses"></div>
+        </div>
+
+        <!-- Course Detail Page -->
+        <div id="courseDetailPage" class="page">
+            <div id="courseDetail"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
