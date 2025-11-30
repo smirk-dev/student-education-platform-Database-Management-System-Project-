@@ -1,0 +1,33 @@
+{
+  "name": "hybrid-student-learning-portal",
+  "version": "1.0.0",
+  "description": "A hybrid database system using MySQL and MongoDB for student learning management",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "init-db": "node src/scripts/initDatabase.js"
+  },
+  "keywords": [
+    "mysql",
+    "mongodb",
+    "dbms",
+    "student-portal",
+    "hybrid-database"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
