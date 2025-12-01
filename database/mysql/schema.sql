@@ -108,8 +108,8 @@ CREATE TABLE quiz_submissions (
 -- Password for all users: 'password123' (hashed with bcrypt)
 INSERT INTO users (name, email, password_hash, role) VALUES
 ('John Admin', 'admin@university.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'admin'),
-('Dr. Sarah Johnson', 'sarah.johnson@university.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'instructor'),
-('Prof. Michael Chen', 'michael.chen@university.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'instructor'),
+('Dr. Divya Mishra', 'divya.mishra@ddn.upes.ac.in', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'instructor'),
+('Dr. Neelu Jyoti Ahuja', 'neelu.ahuja@ddn.upes.ac.in', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'instructor'),
 ('Alice Smith', 'alice.smith@student.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'student'),
 ('Bob Williams', 'bob.williams@student.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'student'),
 ('Carol Davis', 'carol.davis@student.edu', '$2a$10$rZqVvXaYCGv0v0Y1Y7IYVO5UqKlZqYyqBQfZx8kKl0z1x2z3z4z5z', 'student'),
