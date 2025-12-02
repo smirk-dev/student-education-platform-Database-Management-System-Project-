@@ -31,7 +31,12 @@ function showPage(pageName) {
         'register': 'registerPage',
         'courses': 'coursesPage',
         'dashboard': 'dashboardPage',
-        'courseDetail': 'courseDetailPage'
+        'courseDetail': 'courseDetailPage',
+        'discussions': 'discussionsPage',
+        'quizzes': 'quizzesPage',
+        'assignments': 'assignmentsPage',
+        'activity': 'activityPage',
+        'stats': 'statsPage'
     };
     
     const pageId = pageMap[pageName];
@@ -43,6 +48,8 @@ function showPage(pageName) {
             loadCourses();
         } else if (pageName === 'dashboard' && currentUser) {
             loadDashboard();
+        } else if (pageName === 'stats' && currentUser) {
+            loadPlatformStats();
         }
     }
 }
@@ -150,15 +157,18 @@ function updateNavigation() {
     const loginLink = document.getElementById('loginLink');
     const logoutLink = document.getElementById('logoutLink');
     const dashboardLink = document.getElementById('dashboardLink');
+    const statsLink = document.getElementById('statsLink');
     
     if (currentUser) {
         loginLink.style.display = 'none';
         logoutLink.style.display = 'block';
         dashboardLink.style.display = 'block';
+        statsLink.style.display = 'block';
     } else {
         loginLink.style.display = 'block';
         logoutLink.style.display = 'none';
         dashboardLink.style.display = 'none';
+        statsLink.style.display = 'none';
     }
 }
 

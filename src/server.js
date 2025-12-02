@@ -17,6 +17,10 @@ const { connectMongoDB, closeConnection: closeMongoConnection } = require('./con
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+const discussionRoutes = require('./routes/discussionRoutes');
+const assignmentRoutes = require('./routes/assignmentRoutes');
+const activityRoutes = require('./routes/activityRoutes');
 
 // Initialize Express app
 const app = express();
@@ -52,6 +56,10 @@ app.get('/api/health', (req, res) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api', quizRoutes);
+app.use('/api', discussionRoutes);
+app.use('/api', assignmentRoutes);
+app.use('/api', activityRoutes);
 
 // API documentation endpoint
 app.get('/api', (req, res) => {
@@ -73,7 +81,41 @@ app.get('/api', (req, res) => {
         create: 'POST /api/courses (instructor/admin)',
         myEnrolled: 'GET /api/courses/my/courses (student)',
         enroll: 'POST /api/courses/:id/enroll (student)',
-        getStudents: 'GET /api/courses/:id/students (instructor/admin)'
+        getStudents: 'GET /api/courses/:id/students (instructor/admin)',
+        database: 'MySQL'
+      },
+      quizzes: {
+        getCourse: 'GET /api/courses/:courseId/quizzes',
+        getById: 'GET /api/quizzes/:quizId',
+        submit: 'POST /api/quizzes/:quizId/submit (student)',
+        getMy: 'GET /api/quizzes/my/submissions (student)',
+        stats: 'GET /api/quizzes/:quizId/stats (instructor)',
+        database: 'MySQL'
+      },
+      discussions: {
+        getCourse: 'GET /api/courses/:courseId/discussions',
+        getById: 'GET /api/discussions/:discussionId',
+        create: 'POST /api/courses/:courseId/discussions',
+        addComment: 'POST /api/discussions/:discussionId/comments',
+        addReply: 'POST /api/discussions/:discussionId/comments/:commentId/replies',
+        upvote: 'POST /api/discussions/:discussionId/upvote',
+        database: 'MongoDB'
+      },
+      assignments: {
+        getCourse: 'GET /api/courses/:courseId/assignments',
+        getMy: 'GET /api/assignments/my (student)',
+        getById: 'GET /api/assignments/:assignmentId',
+        submit: 'POST /api/courses/:courseId/assignments (student)',
+        grade: 'POST /api/assignments/:assignmentId/grade (instructor)',
+        stats: 'GET /api/courses/:courseId/assignments/stats (instructor)',
+        database: 'MongoDB'
+      },
+      activity: {
+        getMy: 'GET /api/activity/me',
+        getMyStats: 'GET /api/activity/me/stats',
+        getCourse: 'GET /api/courses/:courseId/activity (instructor)',
+        getPlatform: 'GET /api/stats/platform (admin)',
+        database: 'MongoDB'
       }
     }
   });

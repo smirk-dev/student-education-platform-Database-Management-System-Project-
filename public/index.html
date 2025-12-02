@@ -15,6 +15,7 @@
                 <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
                 <a href="#" class="nav-link" onclick="showPage('courses')">Courses</a>
                 <a href="#" class="nav-link" id="dashboardLink" style="display:none" onclick="showPage('dashboard')">Dashboard</a>
+                <a href="#" class="nav-link" id="statsLink" style="display:none" onclick="showPage('stats')">Database Stats</a>
                 <a href="#" class="nav-link" id="loginLink" onclick="showPage('login')">Login</a>
                 <a href="#" class="nav-link" id="logoutLink" style="display:none" onclick="logout()">Logout</a>
             </div>
@@ -113,12 +114,71 @@
         <div id="dashboardPage" class="page">
             <h2>My Dashboard</h2>
             <div id="profileSection" class="profile-section"></div>
+            
+            <!-- Quick Actions -->
+            <div class="quick-actions" style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="showPage('courses')">📚 Browse Courses</button>
+                <button class="btn" onclick="showMyQuizzes()">📝 My Quizzes</button>
+                <button class="btn" onclick="showMyAssignments()">📋 My Assignments</button>
+                <button class="btn" onclick="showMyActivity()">📊 My Activity</button>
+            </div>
+            
             <div id="enrolledCourses" class="enrolled-courses"></div>
+            <div id="dashboardContent"></div>
         </div>
 
         <!-- Course Detail Page -->
         <div id="courseDetailPage" class="page">
             <div id="courseDetail"></div>
+            <div id="courseActions" style="margin-top: 2rem;"></div>
+        </div>
+        
+        <!-- Discussions Page -->
+        <div id="discussionsPage" class="page">
+            <button class="btn" onclick="goBackToCourse()" style="margin-bottom: 1rem;">← Back to Course</button>
+            <h2>Course Discussions</h2>
+            <div style="margin-bottom: 1rem;">
+                <button class="btn btn-primary" onclick="showCreateDiscussion()">+ New Discussion</button>
+            </div>
+            <div id="discussionsList"></div>
+            <div id="discussionDetail" style="display:none;"></div>
+            <div id="createDiscussionForm" style="display:none;"></div>
+        </div>
+        
+        <!-- Quizzes Page -->
+        <div id="quizzesPage" class="page">
+            <button class="btn" onclick="goBackToCourse()" style="margin-bottom: 1rem;">← Back to Course</button>
+            <h2>Course Quizzes</h2>
+            <div id="quizzesList"></div>
+            <div id="quizDetail" style="display:none;"></div>
+        </div>
+        
+        <!-- Assignments Page -->
+        <div id="assignmentsPage" class="page">
+            <button class="btn" onclick="goBackToCourse()" style="margin-bottom: 1rem;">← Back to Course</button>
+            <h2>Course Assignments</h2>
+            <div style="margin-bottom: 1rem;">
+                <button class="btn btn-primary" onclick="showSubmitAssignment()">+ Submit Assignment</button>
+            </div>
+            <div id="assignmentsList"></div>
+            <div id="assignmentDetail" style="display:none;"></div>
+            <div id="submitAssignmentForm" style="display:none;"></div>
+        </div>
+        
+        <!-- Activity Page -->
+        <div id="activityPage" class="page">
+            <button class="btn" onclick="showPage('dashboard')" style="margin-bottom: 1rem;">← Back to Dashboard</button>
+            <h2>My Activity Log</h2>
+            <p class="subtitle">Stored in MongoDB - Real-time tracking of all your actions</p>
+            <div id="activityStats" style="margin: 2rem 0;"></div>
+            <div id="activityList"></div>
+        </div>
+        
+        <!-- Database Stats Page -->
+        <div id="statsPage" class="page">
+            <h2>Database Statistics</h2>
+            <p class="subtitle">Real-time view of both MySQL and MongoDB databases</p>
+            <div id="databaseStats"></div>
         </div>
     </div>
 
